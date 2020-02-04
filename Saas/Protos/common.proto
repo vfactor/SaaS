@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "Saas.Entities";
+
+package Common;
+
+message KeyValuePairs{
+  message KeyValuePair{
+	string key = 1;
+	int32 value = 2;
+  }
+  repeated KeyValuePair values = 1;
+}
+message Int{
+	int32 value = 1;
+}
+message Bool{
+	bool value = 1;
+}
+message String{
+	string value = 1; 
+}
+message Empty{}

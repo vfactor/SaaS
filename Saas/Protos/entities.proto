@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+option csharp_namespace = "Saas.Entities";
+
+package Entities;
+
+message Restaurants{
+  message Restaurant{
+    int32 id = 1;
+    string name = 2;
+    string phone = 3;
+    string address = 4;
+    string city = 5;
+    string state = 6;
+    string zip = 7;
+    string country = 8;
+    string lat = 9;
+    string long = 10;    
+  }
+  repeated Restaurant values = 1;
+}
+message Items{
+  message Item{
+    int32 id = 1;
+    int32 restaurantId = 2;
+    float price = 3;
+    bool isExtra = 4;
+    int32 state = 5;	
+  }
+  repeated Item values = 1;
+}
+message Menus{
+  message Menu{
+    int32 id = 1;
+    int32 restaurantId = 2;
+    float price = 3;	
+  }
+  repeated Menu values = 1;
+}
+message MenuItems{
+  message MenuItem{
+    int32 id = 1;
+    int32 menuId = 2;
+    Items.Item itemId = 3;
+    int32 quantity = 4;
+    bool useItemDescription = 5;
+  }
+  repeated MenuItem values = 1;
+}
+message Tables{
+  message Table{
+    int32 id = 1;
+    int32 restaurantId = 2;
+    string name = 3;
+    int32 numberOfSeat = 4;
+  }
+  repeated Table values = 1;
+}
+message Languages{
+  message Language{
+    int32 id = 1;
+    string code = 2;
+    string value = 3;
+  }
+  repeated Language values = 1;
+}
+message RestaurantLanguage{
+  int32 id = 1;
+  int32 restaurantId = 2;
+  int32 languageId = 3;
+}
