@@ -10,9 +10,8 @@ namespace Saas.Entities
       {
         public static Languages Read(string connectionStr)
         {
-          return new Languages(
-            ReferenceTable<Language>.GetInstance(connectionStr).Read()
-          );
+          var db = new ReferenceTable<Language>(connectionStr);
+          return new Languages(db.Read());
         }
       }
     }

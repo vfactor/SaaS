@@ -10,12 +10,12 @@ using static Saas.Entities.Tables.Types;
 
 namespace Saas.Services
 {
-  internal class Table_R : TableSvc.TableSvcBase
+  internal class TableService : TableSvc.TableSvcBase
   {
-    private readonly ILogger<Table_R> _logger;
+    private readonly ILogger<TableService> _logger;
     private readonly string _connectionStr;
 
-    public Table_R(ILogger<Table_R> logger, IConfiguration config)
+    public TableService(ILogger<TableService> logger, IConfiguration config)
     {
       _logger = logger;
       _connectionStr = config.GetConnectionString("AllAboutFood");

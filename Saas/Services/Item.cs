@@ -9,12 +9,12 @@ using static Saas.Entities.Items.Types;
 
 namespace Saas.Services
 {
-    internal class Item_RU : ItemSvc.ItemSvcBase
+    internal class ItemService : ItemSvc.ItemSvcBase
     {
-        private readonly ILogger<Item_RU> _logger;
+        private readonly ILogger<ItemService> _logger;
         private readonly string _connectionString;
 
-        public Item_RU(ILogger<Item_RU> logger, IConfiguration config)
+        public ItemService(ILogger<ItemService> logger, IConfiguration config)
         {
             _logger = logger;
             _connectionString = config.GetConnectionString("AllAboutFood");

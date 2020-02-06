@@ -10,12 +10,12 @@ using static Saas.Entities.MenuItems.Types;
 
 namespace Saas.Services
 {
-  internal class MenuItem_R : MenuItemSvc.MenuItemSvcBase
+  internal class MenuItemService : MenuItemSvc.MenuItemSvcBase
   {
-    private readonly ILogger<MenuItem_R> _logger;
+    private readonly ILogger<MenuItemService> _logger;
     private readonly string _connectionStr;
 
-    public MenuItem_R(ILogger<MenuItem_R> logger, IConfiguration config)
+    public MenuItemService(ILogger<MenuItemService> logger, IConfiguration config)
     {
       _logger = logger;
       _connectionStr = config.GetConnectionString("AllAboutFood");

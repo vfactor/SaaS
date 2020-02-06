@@ -12,22 +12,26 @@ namespace Saas.Entities
       {
         public static MenuItem Read(int id, string connectionStr)
         {
-          return JoinTable<MenuItem>.GetInstance(connectionStr).Read(id);
+          var db = new JoinTable<MenuItem>(connectionStr);
+          return db.Read(id);
         }
 
         public static MenuItems ReadByMenuId(int menuId, string connectionStr)
         {
-          return new MenuItems(JoinTable<MenuItem>.GetInstance(connectionStr).ReadByMasterId(new Dictionary<string, int> { { "menuId", menuId } }));
+          var db = new JoinTable<MenuItem>(connectionStr);
+          return new MenuItems(db.ReadByMasterId(new Dictionary<string, int> { { "menuId", menuId } }));
         }
 
         public static MenuItems ReadByItemId(int itemId, string connectionStr)
         {
-          return new MenuItems(JoinTable<MenuItem>.GetInstance(connectionStr).ReadByMasterId(new Dictionary<string, int> { { "itemId", itemId } }));
+          var db = new JoinTable<MenuItem>(connectionStr);
+          return new MenuItems(db.ReadByMasterId(new Dictionary<string, int> { { "itemId", itemId } }));
         }
 
         public static MenuItem ReadByMenuAndItemId(IDictionary<string, int> masterInfos, string connectionStr)
         {
-          return JoinTable<MenuItem>.GetInstance(connectionStr).ReadByMasterId(masterInfos)?.First();
+          var db = new JoinTable<MenuItem>(connectionStr);
+          return db.ReadByMasterId(masterInfos)?.First();
         }
       }
     }

@@ -10,24 +10,25 @@ namespace Saas.Entities.DAL
 {
   internal class Table<T> : ITable<T> where T : new()
   {
-    private static Table<T> instance = null;
+    //private static Table<T> instance = null;
 
-    internal static Table<T> GetInstance(string connectionStr)
-    {
-      if (instance == null)
-        instance = new Table<T>();
+    //internal static Table<T> GetInstance(string connectionStr)
+    //{
+    //  if (instance == null)
+    //    instance = new Table<T>();
 
-      instance.ConnectionString = connectionStr;
+    //  instance.ConnectionString = connectionStr;
 
-      return instance;
-    }
-
-    protected Table()
-    {
-    }
+    //  return instance;
+    //}
 
     protected string StoreProcName => typeof(T).Name;
     protected string ConnectionString;
+
+    public Table(string connectionStr)
+    {
+      ConnectionString = connectionStr;
+    }
 
     protected SqlParameter[] CreateParameters(T obj)
     {
@@ -144,19 +145,19 @@ namespace Saas.Entities.DAL
 
   internal sealed class LookupTable<T> : Table<T>, ILookup<T> where T : new()
   {
-    private static LookupTable<T> instance = null;
+    //private static LookupTable<T> instance = null;
 
-    internal new static LookupTable<T> GetInstance(string connectionStr)
-    {
-      if (instance == null)
-        instance = new LookupTable<T>();
+    //internal new static LookupTable<T> GetInstance(string connectionStr)
+    //{
+    //  if (instance == null)
+    //    instance = new LookupTable<T>();
 
-      instance.ConnectionString = connectionStr;
+    //  instance.ConnectionString = connectionStr;
 
-      return instance;
-    }
+    //  return instance;
+    //}
 
-    private LookupTable()
+    public LookupTable(string connectionStr) : base(connectionStr)
     {
     }
 
@@ -178,19 +179,19 @@ namespace Saas.Entities.DAL
 
   internal sealed class DetailTable<T> : Table<T>, IDetail<T> where T : new()
   {
-    private static DetailTable<T> instance = null;
+    //private static DetailTable<T> instance = null;
 
-    internal new static DetailTable<T> GetInstance(string connectionStr)
-    {
-      if (instance == null)
-        instance = new DetailTable<T>();
+    //internal new static DetailTable<T> GetInstance(string connectionStr)
+    //{
+    //  if (instance == null)
+    //    instance = new DetailTable<T>();
 
-      instance.ConnectionString = connectionStr;
+    //  instance.ConnectionString = connectionStr;
 
-      return instance;
-    }
+    //  return instance;
+    //}
 
-    private DetailTable()
+    public DetailTable(string connectionStr) : base(connectionStr)
     {
     }
 
@@ -212,19 +213,19 @@ namespace Saas.Entities.DAL
 
   internal sealed class ReferenceTable<T> : Table<T>, IReference<T> where T : new()
   {
-    private static ReferenceTable<T> instance = null;
+    //private static ReferenceTable<T> instance = null;
 
-    internal new static ReferenceTable<T> GetInstance(string connectionStr)
-    {
-      if (instance == null)
-        instance = new ReferenceTable<T>();
+    //internal new static ReferenceTable<T> GetInstance(string connectionStr)
+    //{
+    //  if (instance == null)
+    //    instance = new ReferenceTable<T>();
 
-      instance.ConnectionString = connectionStr;
+    //  instance.ConnectionString = connectionStr;
 
-      return instance;
-    }
+    //  return instance;
+    //}
 
-    private ReferenceTable()
+    public ReferenceTable(string connectionStr) : base(connectionStr)
     {
     }
 
@@ -245,19 +246,19 @@ namespace Saas.Entities.DAL
 
   internal sealed class JoinTable<T> : Table<T>, IJoin<T> where T : new()
   {
-    private static JoinTable<T> instance = null;
+    //private static JoinTable<T> instance = null;
 
-    internal new static JoinTable<T> GetInstance(string connectionStr)
-    {
-      if (instance == null)
-        instance = new JoinTable<T>();
+    //internal new static JoinTable<T> GetInstance(string connectionStr)
+    //{
+    //  if (instance == null)
+    //    instance = new JoinTable<T>();
 
-      instance.ConnectionString = connectionStr;
+    //  instance.ConnectionString = connectionStr;
 
-      return instance;
-    }
+    //  return instance;
+    //}
 
-    private JoinTable()
+    public JoinTable(string connectionStr) : base(connectionStr)
     {
     }
 

@@ -10,24 +10,26 @@ namespace Saas.Entities
       {
         public static Int Update(Item obj, string connectionStr)
         {
-          return new Int(DetailTable<Item>.GetInstance(connectionStr).Update(obj));
+          var db = new DetailTable<Item>(connectionStr);
+          return new Int(db.Update(obj));
         }
 
         public static Item Read(int id, string connectionStr)
         {
-          return DetailTable<Item>.GetInstance(connectionStr).Read(id);
+          var db = new DetailTable<Item>(connectionStr);
+          return db.Read(id);
         }
 
         public static Int Create(Item obj, string connectionStr)
         {
-          return new Int(DetailTable<Item>.GetInstance(connectionStr).Create(obj));
+          var db = new DetailTable<Item>(connectionStr);
+          return new Int(db.Create(obj));
         }
 
         public static Items ReadByRestaurantId(int restaurantId, string connectionStr)
         {
-          return new Items(
-            DetailTable<Item>.GetInstance(connectionStr).ReadByMasterId("restaurantId", restaurantId)
-          );
+          var db = new DetailTable<Item>(connectionStr);
+          return new Items(db.ReadByMasterId("restaurantId", restaurantId));
         }
       }
     }

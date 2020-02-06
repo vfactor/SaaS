@@ -9,12 +9,12 @@ using static Saas.Entities.Languages.Types;
 
 namespace Saas.Services
 {
-  internal class Reference_R : ReferenceSvc.ReferenceSvcBase
+  internal class ReferenceService : ReferenceSvc.ReferenceSvcBase
   {
-    private readonly ILogger<Reference_R> _logger;
+    private readonly ILogger<ReferenceService> _logger;
     private readonly string _connectionStr;
 
-    internal Reference_R(ILogger<Reference_R> logger, IConfiguration config)
+    internal ReferenceService(ILogger<ReferenceService> logger, IConfiguration config)
     {
       _logger = logger;
       _connectionStr = config.GetConnectionString("AllAboutFood");

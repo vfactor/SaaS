@@ -10,14 +10,14 @@ namespace Saas.Entities
       {
         public static Table Read(int id, string connectionStr)
         {
-          return DetailTable<Table>.GetInstance(connectionStr).Read(id);
+          var db = new DetailTable<Table>(connectionStr);
+          return db.Read(id);
         }
 
         public static Tables ReadByRestaurantId(int restaurantId, string connectionStr)
         {
-          return new Tables(
-            DetailTable<Table>.GetInstance(connectionStr).ReadByMasterId("restaurantId", restaurantId)
-          );
+          var db = new DetailTable<Table>(connectionStr);
+          return new Tables(db.ReadByMasterId("restaurantId", restaurantId));
         }
       }
     }

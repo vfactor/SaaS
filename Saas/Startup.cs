@@ -17,11 +17,6 @@ namespace Saas
     {
       services.AddGrpc();
       services.AddControllers();
-
-      services.AddSwaggerGen(c =>
-      {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Saas API", Version = "v1" });
-      });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,16 +27,6 @@ namespace Saas
         app.UseDeveloperExceptionPage();
       }
 
-      // Enable middleware to serve generated Swagger as a JSON endpoint.
-      app.UseSwagger();
-
-      // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-      // specifying the Swagger JSON endpoint.
-      app.UseSwaggerUI(c =>
-      {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Saas API v1");
-      });
-
       app.UseHttpsRedirection();
 
       app.UseRouting();
@@ -50,12 +35,12 @@ namespace Saas
 
       app.UseEndpoints((Action<IEndpointRouteBuilder>)(endpoints =>
       {
-        endpoints.MapGrpcService<Services.Reference_R>();
-        endpoints.MapGrpcService<Services.Restaurant_CRUD>();
-        endpoints.MapGrpcService<Services.Table_R>();
-        endpoints.MapGrpcService<Services.Item_RU>();
-        endpoints.MapGrpcService<Services.Menu_CR>();
-        endpoints.MapGrpcService<Services.MenuItem_R>();
+        endpoints.MapGrpcService<Services.ReferenceService>();
+        endpoints.MapGrpcService<Services.RestaurantService>();
+        endpoints.MapGrpcService<Services.TableService>();
+        endpoints.MapGrpcService<Services.ItemService>();
+        endpoints.MapGrpcService<Services.MenuService>();
+        endpoints.MapGrpcService<Services.MenuItemService>();
 
         endpoints.MapGet("/", async context =>
         {
