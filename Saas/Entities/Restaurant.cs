@@ -1,4 +1,5 @@
 ﻿using Saas.Entities.DAL;
+using System.Collections.Generic;
 
 namespace Saas.Entities
 {
@@ -8,36 +9,23 @@ namespace Saas.Entities
     {
       public partial class Restaurant
       {
-        public static Restaurant Read(int id, string connectionStr)
-        {
-          var db = new LookupTable<Restaurant>(connectionStr);
-          return db.Read(id);
+        internal static Restaurant Read(int id, string connectionStr)
+        {          
+          return new ReferenceTable<Restaurant>(connectionStr).Read(id);
         }
 
-        public static Restaurants Lookup(string value, string connectionStr)
-        {
-          var db = new LookupTable<Restaurant>(connectionStr);
-          return new Restaurants(db.Lookup(value));
-        }
-
-        public static Int Update(Restaurant obj, string connectionStr)
-        {
-          var db = new LookupTable<Restaurant>(connectionStr);
-          return new Int(db.Update(obj));
-        }
-
-        public static Int Create(Restaurant obj, string connectionStr)
-        {
-          var db = new LookupTable<Restaurant>(connectionStr);
-          return new Int(db.Create(obj));
-        }
-
-        public static Int Delete(int id, string connectionStr)
-        {
-          var db = new LookupTable<Restaurant>(connectionStr);
-          return new Int(db.Delete(id));
-        }
+       
+       
+        internal static Restaurants ReadAll(string connectionStr)
+        {          
+          return new Restaurants(new ReferenceTable<Restaurant>(connectionStr).Read());
+        }               
       }
+    }
+
+    public Restaurants(IEnumerable<Types.Restaurant> values)
+    {
+      Values.AddRange(values);
     }
   }
 }

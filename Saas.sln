@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.Android", "Mobile\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.iOS", "Mobile\Mobile.iOS\Mobile.iOS.csproj", "{0025DF08-3B06-4938-845F-4B685BA38192}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile", "Mobile\Mobile\Mobile.csproj", "{7D2C5CCD-E1B9-4765-8442-47C936923060}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mobile", "Mobile\Mobile\Mobile.csproj", "{7D2C5CCD-E1B9-4765-8442-47C936923060}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSPA", "BlazorSPA\BlazorSPA.csproj", "{6F9A243F-20FA-453A-AFCA-69DFA5A65F04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,18 @@ Global
 		{7D2C5CCD-E1B9-4765-8442-47C936923060}.Release|iPhone.Build.0 = Release|Any CPU
 		{7D2C5CCD-E1B9-4765-8442-47C936923060}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{7D2C5CCD-E1B9-4765-8442-47C936923060}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{6F9A243F-20FA-453A-AFCA-69DFA5A65F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F9A243F-20FA-453A-AFCA-69DFA5A65F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F9A243F-20FA-453A-AFCA-69DFA5A65F04}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{6F9A243F-20FA-453A-AFCA-69DFA5A65F04}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{6F9A243F-20FA-453A-AFCA-69DFA5A65F04}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{6F9A243F-20FA-453A-AFCA-69DFA5A65F04}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{6F9A243F-20FA-453A-AFCA-69DFA5A65F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F9A243F-20FA-453A-AFCA-69DFA5A65F04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F9A243F-20FA-453A-AFCA-69DFA5A65F04}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{6F9A243F-20FA-453A-AFCA-69DFA5A65F04}.Release|iPhone.Build.0 = Release|Any CPU
+		{6F9A243F-20FA-453A-AFCA-69DFA5A65F04}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{6F9A243F-20FA-453A-AFCA-69DFA5A65F04}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

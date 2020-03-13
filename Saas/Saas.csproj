@@ -3,18 +3,31 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.11.3" />
-    <PackageReference Include="Grpc.AspNetCore.Server" Version="2.26.0" />
-    <PackageReference Include="Grpc.Core" Version="2.26.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.26.0">
+    <Compile Remove="Entities\Common.cs" />
+    <Compile Remove="Entities\DAL\DbContext.cs" />
+    <Compile Remove="Entities\DAL\IDal.cs" />
+    <Compile Remove="Entities\Item.cs" />
+    <Compile Remove="Entities\Language.cs" />
+    <Compile Remove="Entities\Menu.cs" />
+    <Compile Remove="Entities\MenuDetail.cs" />
+    <Compile Remove="Entities\MenuItem.cs" />
+    <Compile Remove="Entities\Restaurant.cs" />
+    <Compile Remove="Entities\RestaurantLanguage.cs" />
+    <Compile Remove="Entities\Table.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.11.4" />
+    <PackageReference Include="Grpc.AspNetCore.Server" Version="2.27.0" />
+    <PackageReference Include="Grpc.Core" Version="2.27.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.27.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.2" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.1.4" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using Saas.Entities.DAL;
+using System.Collections.Generic;
 
 namespace Saas.Entities
 {
@@ -6,26 +7,15 @@ namespace Saas.Entities
   {
     public partial class Types
     {
-      public partial class Menu
-      {
-        public static Menu Read(int id, string connectionStr)
-        {
-          var db = new DetailTable<Menu>(connectionStr);
-          return db.Read(id);
-        }
-
-        public static Menus ReadByRestaurantId(int restaurantId, string connectionStr)
-        {
-          var db = new DetailTable<Menu>(connectionStr);
-          return new Menus(db.ReadByMasterId("restaurantId", restaurantId));
-        }
-
-        public static Int Create(Menu obj, string connectionStr)
-        {
-          var db = new DetailTable<Menu>(connectionStr);
-          return new Int(db.Create(obj));
-        }
+      public partial class Menu : Base<Menu>
+      {        
+       
       }
+    }
+
+    public Menus(IEnumerable<Types.Menu> values)
+    {
+      Values.AddRange(values);
     }
   }
 }

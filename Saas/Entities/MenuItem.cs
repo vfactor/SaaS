@@ -8,32 +8,19 @@ namespace Saas.Entities
   {
     public partial class Types
     {
-      public partial class MenuItem
-      {
-        public static MenuItem Read(int id, string connectionStr)
+      public partial class MenuItem : Base<MenuItem>
+      {        
+        internal static MenuItems ReadByMenuDetailAndItem(int rootId, MenuItemIds menuItemIds, string connectionStr)
         {
-          var db = new JoinTable<MenuItem>(connectionStr);
-          return db.Read(id);
-        }
-
-        public static MenuItems ReadByMenuId(int menuId, string connectionStr)
-        {
-          var db = new JoinTable<MenuItem>(connectionStr);
-          return new MenuItems(db.ReadByMasterId(new Dictionary<string, int> { { "menuId", menuId } }));
-        }
-
-        public static MenuItems ReadByItemId(int itemId, string connectionStr)
-        {
-          var db = new JoinTable<MenuItem>(connectionStr);
-          return new MenuItems(db.ReadByMasterId(new Dictionary<string, int> { { "itemId", itemId } }));
-        }
-
-        public static MenuItem ReadByMenuAndItemId(IDictionary<string, int> masterInfos, string connectionStr)
-        {
-          var db = new JoinTable<MenuItem>(connectionStr);
-          return db.ReadByMasterId(masterInfos)?.First();
-        }
+          var ids = new Dictionary<string, int> { { Key.MENUDETAIL, menuItemIds.MenuDetailId }, { Key.ITEM, menuItemIds.ItemId } };
+          return new MenuItems(new JoinTable<MenuItem>(rootId, connectionStr).ReadByMasterIds(ids));
+        }        
       }
+    }
+
+    public MenuItems(IEnumerable<Types.MenuItem> values)
+    {
+      Values.AddRange(values);
     }
   }
 }

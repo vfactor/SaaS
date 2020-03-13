@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+
+using Saas.Entities;
 
 namespace Saas
 {
@@ -17,6 +18,14 @@ namespace Saas
     {
       services.AddGrpc();
       services.AddControllers();
+      services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+      {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+      }));
+
+      services.AddSingleton<AppData>();  
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,9 +42,11 @@ namespace Saas
 
       app.UseAuthorization();
 
+      app.UseCors("MyPolicy");
+
       app.UseEndpoints((Action<IEndpointRouteBuilder>)(endpoints =>
       {
-        endpoints.MapGrpcService<Services.ReferenceService>();
+        endpoints.MapGrpcService<Services.AppDataService>();
         endpoints.MapGrpcService<Services.RestaurantService>();
         endpoints.MapGrpcService<Services.TableService>();
         endpoints.MapGrpcService<Services.ItemService>();

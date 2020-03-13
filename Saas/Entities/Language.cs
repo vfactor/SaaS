@@ -1,4 +1,5 @@
 ﻿using Saas.Entities.DAL;
+using System.Collections.Generic;
 
 namespace Saas.Entities
 {
@@ -8,12 +9,15 @@ namespace Saas.Entities
     {
       public partial class Language
       {
-        public static Languages Read(string connectionStr)
-        {
-          var db = new ReferenceTable<Language>(connectionStr);
-          return new Languages(db.Read());
+        internal static Languages Read(string connectionStr)
+        {          
+          return new Languages(new ReferenceTable<Language>(connectionStr).Read());
         }
       }
+    }
+    public Languages(IEnumerable<Types.Language> values)
+    {
+      Values.AddRange(values);
     }
   }
 }
