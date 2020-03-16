@@ -28,25 +28,25 @@ service ItemSvc {
   rpc Create (Entities.Items.Item) returns (Common.Int);
   rpc Update (Entities.Items.Item) returns (Common.Int);
 }
+service RestaurantMenuSvc {
+  rpc Get (Common.Int) returns (Entities.RestaurantMenus.RestaurantMenu);
+  rpc GetByRestaurant (Common.Int) returns (Entities.RestaurantMenus);
+  rpc Create (Entities.RestaurantMenus.RestaurantMenu) returns (Common.Int);
+  rpc Update (Entities.RestaurantMenus.RestaurantMenu) returns (Common.Int);
+  rpc Delete (Common.Int) returns (Common.Int);
+}
 service MenuSvc {
   rpc Get (Common.Int) returns (Entities.Menus.Menu);
-  rpc GetByRestaurant (Common.Int) returns (Entities.Menus);
+  rpc GetByRestaurantMenu (Common.Int) returns (Entities.Menus);
   rpc Create (Entities.Menus.Menu) returns (Common.Int);
   rpc Update (Entities.Menus.Menu) returns (Common.Int);
   rpc Delete (Common.Int) returns (Common.Int);
 }
-service MenuDetailSvc {
-  rpc Get (Common.Int) returns (Entities.MenuDetails.MenuDetail);
-  rpc GetByMenu (Common.Int) returns (Entities.MenuDetails);
-  rpc Create (Entities.MenuDetails.MenuDetail) returns (Common.Int);
-  rpc Update (Entities.MenuDetails.MenuDetail) returns (Common.Int);
-  rpc Delete (Common.Int) returns (Common.Int);
-}
 service MenuItemSvc {
   rpc Get (Common.Int) returns (Entities.MenuItems.MenuItem);  
-  rpc GetByMenuDetail (Common.Int) returns (Entities.MenuItems);
+  rpc GetByMenu (Common.Int) returns (Entities.MenuItems);
   rpc GetByItem (Common.Int) returns (Entities.MenuItems);
-  rpc GetByMenuDetailAndItem (Entities.MenuItemIds) returns (Entities.MenuItems);
+  rpc GetByMenuAndItem (Entities.MenuItemIds) returns (Entities.MenuItems);
   rpc Create (Entities.MenuItems.MenuItem) returns (Common.Int);
   rpc Delete (Common.Int) returns (Common.Int);
 }

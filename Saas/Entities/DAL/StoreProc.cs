@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using Microsoft.Data.SqlClient;
 using System.Linq;
+
+using Microsoft.Data.SqlClient;
 
 namespace Saas.Entities.DAL
 {
-  internal sealed class DAL<T> : StoreProcedure<T> where T : new()
+  internal sealed class StoreProc<T> : Base<T> where T : new()
   {
     private readonly int _rootId;
-    public DAL(int rootId, string connectionStr) : base(connectionStr)
+    public StoreProc(int rootId, string connectionStr) : base(connectionStr)
     {
       _rootId = rootId;
     }        

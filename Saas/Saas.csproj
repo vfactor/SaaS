@@ -16,6 +16,9 @@
     <Compile Remove="Entities\Table.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Protos\DICTIONARIES.proto" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.11.4" />
     <PackageReference Include="Grpc.AspNetCore.Server" Version="2.27.0" />
     <PackageReference Include="Grpc.Core" Version="2.27.0" />
@@ -31,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Protobuf Include="Protos\dictionaries.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\entities.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\services.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\common.proto" GrpcServices="Server" />

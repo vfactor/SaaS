@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "Saas.Dictionaries";
+
+package Dictionaries;
+
+message Keys{
+  message Key{
+    int32 key = 1;
+    int32 rootId = 2;
+    int32 object_id = 3;
+    int32 id = 4;
+    int32 languageId = 5;
+    string code = 6;
+  }
+  repeated Key values = 1;
+}
+message Values{
+  message Value{
+    int32 key = 1;    
+    int32 type = 2;
+    string val = 3;
+  }
+  repeated Value values = 1;
+}
+message KeyTypes{
+  message KeyType{
+   int32 id = 1;
+   string name = 2;
+   int32 maxlen = 3;
+	}
+  repeated KeyType values = 1;
+}

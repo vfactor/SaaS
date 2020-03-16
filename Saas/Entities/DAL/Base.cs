@@ -1,22 +1,21 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-using Microsoft.Data.SqlClient;
-
 namespace Saas.Entities.DAL
 {
-  internal abstract class StoreProcedure<T> where T : new()
+  internal abstract class Base<T> where T : new()
   {
     private string StoreProcName => typeof(T).Name;
     protected string ReadProcedure => StoreProcName + Constant.READSUFFIX;
     protected string CreateProcedure => StoreProcName + Constant.CREATESUFFIX;
     protected string UpdateProcedure => StoreProcName + Constant.UPDATESUFFIX;
     protected string LookupProcedure => StoreProcName + Constant.LOOKUPSUFFIX;
-
-    protected readonly string ConnectionString;
-    protected StoreProcedure(string connectionStr)
+    
+    protected readonly string ConnectionString;    
+    protected Base(string connectionStr)
     {
       ConnectionString = connectionStr;
     }

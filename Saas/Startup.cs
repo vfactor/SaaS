@@ -50,7 +50,7 @@ namespace Saas
         endpoints.MapGrpcService<Services.RestaurantService>();
         endpoints.MapGrpcService<Services.TableService>();
         endpoints.MapGrpcService<Services.ItemService>();
-        endpoints.MapGrpcService<Services.MenuService>();
+        endpoints.MapGrpcService<Services.RestaurantMenuService>();
         endpoints.MapGrpcService<Services.MenuItemService>();
 
         endpoints.MapGet("/", async context =>

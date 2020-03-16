@@ -45,16 +45,16 @@ namespace Saas.Entities
       Values.AddRange(values);
     }
   }
-  public partial class Menus
+  public partial class RestaurantMenus
   {    
-    public Menus(IEnumerable<Types.Menu> values)
+    public RestaurantMenus(IEnumerable<Types.RestaurantMenu> values)
     {
       Values.AddRange(values);
     }
   }
-  public partial class MenuDetails
+  public partial class Menus
   {  
-    public MenuDetails(IEnumerable<Types.MenuDetail> values)
+    public Menus(IEnumerable<Types.Menu> values)
     {
       Values.AddRange(values);
     }

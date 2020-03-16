@@ -22,8 +22,8 @@ namespace Saas.Controllers
     // GET: Restaurant/
     [HttpGet]
     public ActionResult<IEnumerable<Restaurant>> Get()
-    {      
-      var ret = new Claim(User).GetDBContext<Restaurant>(_app.ConnectionString).Read();
+    {
+      var ret = Claim.DbContext<Restaurant>(User, _app.ConnectionString).Read();
 
       if (ret == null)
         return NotFound();
@@ -35,7 +35,7 @@ namespace Saas.Controllers
     [HttpGet("Lookup/{value}", Name = "LookupRestaurant")]
     public ActionResult<IEnumerable<Restaurant>> Lookup(string value)
     {      
-      var ret = new Claim(User).GetDBContext<Restaurant>(_app.ConnectionString).Read(value);
+      var ret = Claim.DbContext<Restaurant>(User,_app.ConnectionString).Read(value);
 
       if (ret == null)
         return NotFound();
@@ -47,7 +47,7 @@ namespace Saas.Controllers
     [HttpGet("{id}", Name = "GetRestaurant")]
     public ActionResult<Restaurant> Get(int id)
     {
-      var ret = new Claim(User).GetDBContext<Restaurant>(_app.ConnectionString).Read(id);
+      var ret = Claim.DbContext<Restaurant>(User,_app.ConnectionString).Read(id);
 
       if (ret == null || ret.Id != id)
         return NotFound();
@@ -59,7 +59,7 @@ namespace Saas.Controllers
     [HttpPost]
     public IActionResult Post([FromBody] Restaurant value)
     {      
-      var id = new Claim(User).GetDBContext<Restaurant>(_app.ConnectionString).Create(value);
+      var id = Claim.DbContext<Restaurant>(User,_app.ConnectionString).Create(value);
       if (id == 0)
         return BadRequest();
 
@@ -71,7 +71,7 @@ namespace Saas.Controllers
     public IActionResult Put(int id, [FromBody] Restaurant value)
     {    
       int nbRowsAffected;
-      if (id != value.Id || ((nbRowsAffected = new Claim(User).GetDBContext<Restaurant>(_app.ConnectionString).Update(value)) == 0))
+      if (id != value.Id || ((nbRowsAffected = Claim.DbContext<Restaurant>(User,_app.ConnectionString).Update(value)) == 0))
         return BadRequest();
 
       return Ok(nbRowsAffected);
@@ -81,7 +81,7 @@ namespace Saas.Controllers
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {      
-      var nbRowsAffected = new Claim(User).GetDBContext<Restaurant>(_app.ConnectionString).Update(id, _app.States.Delete.Id);
+      var nbRowsAffected =Claim.DbContext<Restaurant>(User,_app.ConnectionString).Update(id, _app.States.Delete.Id);
       if (nbRowsAffected == 0)
         return new NotFoundResult();
 

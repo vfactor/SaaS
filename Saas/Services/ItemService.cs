@@ -21,34 +21,26 @@ namespace Saas.Services
         _app = app;
       }
       public override Task<Item> Get(Int id, ServerCallContext context)
-      {
-        var claim = new Claim(context.GetHttpContext().User);
-        var dbContext = claim.GetDBContext<Item>(_app.ConnectionString);     
-        
+      {      
+        var dbContext = Claim.DbContext<Item>(context.GetHttpContext().User, _app.ConnectionString);
         return Task.FromResult(dbContext?.Read(id.Value));
       }
       public override Task<Items> GetByRestaurant(Int restaurantId, ServerCallContext context)
-      {
-        var claim = new Claim(context.GetHttpContext().User);
-        var dbContext = claim.GetDBContext<Item>(_app.ConnectionString);        
-
+      {        
+        var dbContext = Claim.DbContext<Item>(context.GetHttpContext().User, _app.ConnectionString);
         return Task.FromResult(new Items(dbContext?.Read(new Dictionary<string, int> { { Constant.KEYRESTAURANT, restaurantId.Value } })));
       }
       public override Task<Items> GetByMenuDetail(Int menuDetailId, ServerCallContext context)
-      {
-        var claim = new Claim(context.GetHttpContext().User);
-        var dbContextMenuItem = claim.GetDBContext<MenuItem>(_app.ConnectionString);
-
+      {        
+        var dbContextMenuItem = Claim.DbContext<MenuItem>(context.GetHttpContext().User, _app.ConnectionString);
         var itemIds = dbContextMenuItem?.Read(new Dictionary<string, int> { { Constant.KEYMENUDETAIL, menuDetailId.Value } }).Select(mi => mi.ItemId);        
 
-        var dbContextItem = claim.GetDBContext<Item>(_app.ConnectionString);      
+        var dbContextItem = Claim.DbContext<Item>(context.GetHttpContext().User, _app.ConnectionString);
         return Task.FromResult(new Items(itemIds.Select(i => dbContextItem?.Read(i))));
       }
       public override Task<Int> Update(Item obj, ServerCallContext context)
-      {
-        var claim = new Claim(context.GetHttpContext().User);
-        var dbContext = claim.GetDBContext<Item>(_app.ConnectionString);        
-
+      {        
+        var dbContext = Claim.DbContext<Item>(context.GetHttpContext().User, _app.ConnectionString);
         return Task.FromResult(new Int(dbContext?.Update(obj)));
       }
   }

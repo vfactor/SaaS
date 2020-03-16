@@ -20,17 +20,13 @@ namespace Saas.Services
       _app = data;     
     }
     public override Task<Table> Get(Int id, ServerCallContext context)
-    {
-      var claim = new Claim(context.GetHttpContext().User);
-      var dbContext = claim.GetDBContext<Table>(_app.ConnectionString);
-
+    {      
+      var dbContext = Claim.DbContext<Table>(context.GetHttpContext().User, _app.ConnectionString);
       return Task.FromResult(dbContext?.Read(id.Value));
     }
     public override Task<Tables> GetByRestaurant(Int restaurantId, ServerCallContext context)
-    {
-      var claim = new Claim(context.GetHttpContext().User);
-      var dbContext = claim.GetDBContext<Table>(_app.ConnectionString);
-
+    {      
+      var dbContext = Claim.DbContext<Table>(context.GetHttpContext().User, _app.ConnectionString);
       return Task.FromResult(new Tables(dbContext?.Read(new Dictionary<string, int> { { Constant.KEYRESTAURANT, restaurantId.Value } })));
     }
   }

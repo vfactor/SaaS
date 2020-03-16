@@ -16,13 +16,13 @@
     public const string DISABLE = "Disable";
     public const string DELETE = "Delete";
 
-    public const string KEYROOT = "@rootId";
-    public const string KEYID = "@id";
-    public const string KEYSTATE = "@stateId";
-    public const string KEYRESTAURANT = "@restaurantId";
-    public const string KEYMENU = "@menuId";
-    public const string KEYMENUDETAIL = "@menuDetailId";
-    public const string KEYITEM = "@itemId";
-    public const string KEYVALUE = "@value";
+    public const string KEYROOT = PARAMPREFIX + "root" + ID;
+    public const string KEYID = PARAMPREFIX + "id";
+    public const string KEYSTATE = PARAMPREFIX + "state" + ID;
+    public const string KEYRESTAURANT = PARAMPREFIX + "restaurant" + ID;
+    public const string KEYMENU = PARAMPREFIX + "menu" + ID;
+    public const string KEYMENUDETAIL = PARAMPREFIX + "menuDetail" + ID;
+    public const string KEYITEM = PARAMPREFIX + "item" + ID;
+    public const string KEYVALUE = PARAMPREFIX + "value";
   }
 }

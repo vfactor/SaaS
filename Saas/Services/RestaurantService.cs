@@ -18,38 +18,28 @@ namespace Saas.Services
       _app = data;
     }
     public override Task<Restaurant> Get(Int id, ServerCallContext context)
-    {
-      var claim = new Claim(context.GetHttpContext().User);
-      var dbContext = claim.GetDBContext<Restaurant>(_app.ConnectionString);
-
+    {      
+      var dbContext = Claim.DbContext<Restaurant>(context.GetHttpContext().User, _app.ConnectionString);
       return Task.FromResult(dbContext?.Read(id.Value));
     }
     public override Task<Restaurants> Lookup(String lookupStr, ServerCallContext context)
-    {
-      var claim = new Claim(context.GetHttpContext().User);
-      var dbContext = claim.GetDBContext<Restaurant>(_app.ConnectionString);
-
+    {      
+      var dbContext = Claim.DbContext<Restaurant>(context.GetHttpContext().User, _app.ConnectionString);
       return Task.FromResult(new Restaurants(dbContext?.Read(lookupStr.Value)));
     }
     public override Task<Int> Create(Restaurant obj, ServerCallContext context)
-    {
-      var claim = new Claim(context.GetHttpContext().User);
-      var dbContext = claim.GetDBContext<Restaurant>(_app.ConnectionString);
-
+    {      
+      var dbContext = Claim.DbContext<Restaurant>(context.GetHttpContext().User, _app.ConnectionString);
       return Task.FromResult(new Int(dbContext?.Create(obj)));
     }
     public override Task<Int> Update(Restaurant obj, ServerCallContext context)
-    {
-      var claim = new Claim(context.GetHttpContext().User);
-      var dbContext = claim.GetDBContext<Restaurant>(_app.ConnectionString);
-
+    {      
+      var dbContext = Claim.DbContext<Restaurant>(context.GetHttpContext().User, _app.ConnectionString);
       return Task.FromResult(new Int(dbContext?.Update(obj)));
     }
     public override Task<Int> Delete(Int id, ServerCallContext context)
-    {
-      var claim = new Claim(context.GetHttpContext().User);
-      var dbContext = claim.GetDBContext<Restaurant>(_app.ConnectionString);
-
+    {      
+      var dbContext = Claim.DbContext<Restaurant>(context.GetHttpContext().User, _app.ConnectionString);
       return Task.FromResult(new Int(dbContext?.Update(id.Value, _app.States.Delete.Id)));
     }
   }
